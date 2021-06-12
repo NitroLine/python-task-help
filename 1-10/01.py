@@ -19,10 +19,6 @@ class Vector:
     def __getitem__(self, item):
         return self._coordinates[item]
 
-    def __iter__(self):
-        for x in self._coordinates:
-            yield x
-
     def __sub__(self, other):
         if not isinstance(other, Vector):
             raise TypeError
@@ -38,3 +34,12 @@ class Vector:
         for i in range(len(self._coordinates)):
             new_coord.append(self._coordinates[i]*other)
         return Vector(*new_coord)
+
+
+if __name__ == '__main__':
+    a = Vector(2, 2, 2)
+    b = Vector(1, 1, 1)
+    c = Vector(0, 1, 0)
+    print(*(a + b)._coordinates)
+    print(*((a + c) * 3)._coordinates)
+    print(c[1])
