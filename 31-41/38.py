@@ -7,7 +7,6 @@ from contextlib import contextmanager
 @contextmanager
 def open_files(*args, mode='r', encoding='cp866'):
     files = []
-    print(args)
     try:
         for file_path in args:
             f_obj = open(file_path, mode, encoding=encoding)
