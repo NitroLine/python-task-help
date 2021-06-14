@@ -7,11 +7,7 @@ def is_cycle_strings(str1, str2):
         raise TypeError
     if len(str1) != len(str2):
         return False
-    for shift in range(len(str1)+1):
-        shifted = str2[-shift:] + str2[:-shift]
-        if shifted == str1:
-            return True
-    return False
+    return str1 in str2 * 2
 
 
 if __name__ == '__main__':
