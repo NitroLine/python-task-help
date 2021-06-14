@@ -3,21 +3,11 @@
 
 
 def call_count(f):
-    class CallCounter:
-        def __init__(self):
-            self._count = 0
-
-        @property
-        def count(self):
-            return self._count
-
-    count = CallCounter()
-
     def wrapper(*args, **kwargs):
-        count._count += 1
+        wrapper.calls += 1
         return f(*args, **kwargs)
 
-    wrapper.calls = count
+    wrapper.calls = 0
     return wrapper
 
 
@@ -25,6 +15,6 @@ if __name__ == '__main__':
     @call_count
     def test():
         pass
-    print(test.calls.count)
+    print(test.calls)
     test()
-    print(test.calls.count)
+    print(test.calls)
