@@ -17,7 +17,7 @@ def sum_time(*timeList):
 
 
 def find_times_in_text(text):
-    for match in re.findall(r'\d?\d?:?\d?\d?:?\d{2}:\d{2}',text):
+    for match in re.findall(r'\d?\d?:?\d?\d?:?\d{2}:\d{2}', text):
         yield match
 
 
