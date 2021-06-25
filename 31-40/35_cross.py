@@ -1,13 +1,14 @@
-# На вход подаются два итератора написать генераторную функцию, которая возвращает декартово произведение
-#
-#     A B C ..
-#   a 1 4 9 ..
-#   b 2 3 8 ..
-#   c 5 6 7 ..
-#   .. .. ..
+# Реализовать генераторную функцию cross, принимающую два итератора иd
+# выдающую их декартово произведение по схеме (цифрами указан порядок выдачи элементов):
+#         ```
+#            A  B  C …  ..
+#         a  1  3  6 10 ..
+#         b  2  5  9 ..
+#         c  4  8  ..
+#            7  ..
+#            ..
 
-
-def cart_product(iter1, iter2):
+def cross(iter1, iter2):
     mem1 = []
     mem2 = []
     i = 0
@@ -28,15 +29,7 @@ def cart_product(iter1, iter2):
                 a = get_item(i, mem1, iter1)
                 b = get_item(j, mem2, iter2)
                 j += 1
-            except StopIteration:
-                return
-            yield a, b
-        j -= 1
-        while i > 0:
-            i -= 1
-            try:
-                a = get_item(i, mem1, iter1)
-                b = get_item(j, mem2, iter2)
+                i -= 1
             except StopIteration:
                 return
             yield a, b
@@ -51,5 +44,5 @@ def get_item(ind, mem, iterator):
 
 
 if __name__ == '__main__':
-    print(*cart_product(iter('abc'), iter('ABC')))
+    print(*cross(iter('abc'), iter('ABC')))
 

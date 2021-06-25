@@ -2,10 +2,7 @@
 # к которой применён декоратор, необходимо сделать не более `n` попыток вызова, пока функция не отработает без исключения
 # (исключениями считать классы Exception и его предков); в противном случае пробросить крайнее исключение. (40 баллов)
 
-
 import functools
-
-
 def with_retries(max_tries):
     def decorator(func):
         @functools.wraps(func)
@@ -22,7 +19,6 @@ def with_retries(max_tries):
 
 if __name__ == '__main__':
     import random
-
     @with_retries(max_tries=5)
     def do_something_unreliable():
         """Do something unreliably."""
@@ -32,3 +28,4 @@ if __name__ == '__main__':
             return "Awesome sauce!"
 
     print(do_something_unreliable())
+    print(do_something_unreliable.__name__)
