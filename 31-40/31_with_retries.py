@@ -8,7 +8,6 @@ def with_retries(max_tries):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
             for n in range(1, max_tries + 1):
-                print(n)
                 try:
                     return func(*args, **kwargs)
                 except Exception:
@@ -20,11 +19,10 @@ def with_retries(max_tries):
 
 if __name__ == '__main__':
     import random
-
     @with_retries(max_tries=5)
     def do_something_unreliable():
         """Do something unreliably."""
-        if random.randint(0, 20) > 1:
+        if random.randint(0, 10) > 1:
             raise IOError("Broken sauce, everything is hosed!!!111one")
         else:
             return "Awesome sauce!"
