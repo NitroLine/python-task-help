@@ -1,9 +1,9 @@
 # На вход подаются два итератора написать генераторную функцию, которая возвращает декартово произведение
 #
-#     a b c ..
-#   A 1 4 9 ..
-#   B 2 3 8 ..
-#   C 5 6 7 ..
+#     A B C ..
+#   a 1 4 9 ..
+#   b 2 3 8 ..
+#   c 5 6 7 ..
 #   .. .. ..
 
 
@@ -22,7 +22,7 @@ def cart_product(iter1, iter2):
     while True:
         level += 1
         j = 0
-        i = level
+        i = level - 1
         while j < level:
             try:
                 a = get_item(i, mem1, iter1)
@@ -51,5 +51,5 @@ def get_item(ind, mem, iterator):
 
 
 if __name__ == '__main__':
-    print(*cart_product(iter('abc'), iter('123')))
+    print(*cart_product(iter('abc'), iter('ABC')))
 
